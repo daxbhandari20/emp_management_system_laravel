@@ -21,7 +21,9 @@ class DepartmentResource extends Resource
 {
     protected static ?string $model = Department::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationGroup = 'System Management';
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {
@@ -29,7 +31,9 @@ class DepartmentResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('name'),
+                        TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
                     ])
             ]);
     }
